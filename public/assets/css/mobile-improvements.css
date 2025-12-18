@@ -1,0 +1,319 @@
+/* =========================================
+   Mobile Improvements & Touch Optimization
+   ========================================= */
+
+/* Ensure all interactive elements are touch-friendly (minimum 44x44px) */
+button, a, input[type="button"], input[type="submit"], .btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Better touch targets for form elements */
+input, select, textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+}
+
+/* Improve form control touch area */
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+}
+
+/* Viewport optimization */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Disable double-tap zoom on buttons (better UX) */
+button, a {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile-friendly tables */
+@media (max-width: 768px) {
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 12px 8px;
+        text-align: left;
+        font-size: 0.85rem;
+    }
+
+    /* Make table rows scrollable without affecting layout */
+    thead {
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 10;
+    }
+}
+
+/* Modal improvements for mobile */
+@media (max-width: 768px) {
+    .modal-dialog {
+        margin: 10px;
+        max-height: 90vh;
+    }
+
+    .modal-content {
+        border-radius: 15px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-body {
+        padding: 1.5rem 1rem;
+    }
+
+    .modal-header, .modal-footer {
+        padding: 1rem;
+    }
+}
+
+/* Dropdown menu improvements */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed;
+        left: 10px !important;
+        right: 10px !important;
+        width: auto !important;
+        max-width: calc(100% - 20px) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .dropdown-item {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Card improvements for mobile */
+@media (max-width: 768px) {
+    .card {
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* Badge adjustments */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Icon sizing */
+@media (max-width: 768px) {
+    .bi { font-size: 1.25rem; }
+    .display-1 { font-size: 2.5rem; }
+    .h1, h1 { font-size: 1.75rem; }
+    .h2, h2 { font-size: 1.5rem; }
+    .h3, h3 { font-size: 1.25rem; }
+    .h4, h4 { font-size: 1.1rem; }
+    .h5, h5 { font-size: 1rem; }
+    .h6, h6 { font-size: 0.9rem; }
+}
+
+/* Alert/notification spacing */
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+/* Better spacing for buttons in groups */
+@media (max-width: 768px) {
+    .btn-group, .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-group .btn, .button-group .btn {
+        width: 100%;
+    }
+}
+
+/* Improve readability on mobile */
+@media (max-width: 480px) {
+    body { font-size: 15px; line-height: 1.5; }
+    p { margin-bottom: 0.8rem; }
+}
+
+/* Fix for iOS Safari */
+input[type="search"]::-webkit-search-cancel-button { display: none; }
+
+/* --- PERBAIKAN DASHBOARD MOBILE (Agar Rapi & Compact) --- */
+@media (max-width: 576px) {
+    /* 1. Reset Padding Card agar tidak terlalu besar */
+    .weather-card-bg .card-body {
+        padding: 1.25rem !important;
+        text-align: center; /* Pusatkan semua konten */
+    }
+
+    /* 2. Atur Ulang Layout Grid Utama */
+    .weather-card-bg .row {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Jarak antara Suhu dan Stats */
+    }
+
+    /* 3. Tipografi Judul & Suhu */
+    .weather-card-bg h5 {
+        font-size: 0.9rem;
+        margin-bottom: 0.2rem !important;
+        opacity: 0.9;
+    }
+
+    .weather-card-bg .display-1 {
+        font-size: 4rem !important; /* Perbesar suhu agar jadi highlight */
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 0.2rem;
+    }
+
+    .weather-card-bg h4 {
+        font-size: 1.1rem !important;
+        font-weight: 500;
+        margin-bottom: 0.2rem;
+    }
+    
+    .weather-card-bg small.opacity-75 {
+        font-size: 0.8rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    /* 4. Perbaikan Layout Statistik (Menjadi Horizontal) */
+    /* Target row yang membungkus 3 kotak stat */
+    .weather-card-bg .col-md-6:nth-child(2) .row {
+        display: flex !important;
+        flex-direction: row !important; /* Paksa jadi baris horizontal */
+        flex-wrap: nowrap !important;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 0.5rem !important;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    /* Kotak per Item Statistik */
+    .weather-card-bg .col-4 {
+        width: 33.33% !important; /* Bagi 3 rata */
+        padding: 0 !important;
+        flex: 1;
+    }
+
+    .weather-card-bg .p-2 {
+        padding: 10px 4px !important;
+        background: rgba(255, 255, 255, 0.2) !important; /* Glass effect lebih terang */
+        border-radius: 12px;
+        min-height: 80px; /* Tinggi seragam */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(4px);
+    }
+
+    .weather-card-bg .p-2 i {
+        font-size: 1.3rem !important;
+        margin-bottom: 4px;
+        opacity: 0.9;
+    }
+    
+    /* Perbaikan Teks 'Kelembapan' agar tidak turun baris */
+    .weather-card-bg .p-2 small {
+        font-size: 0.65rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap; /* Mencegah text wrapping */
+        opacity: 0.8;
+    }
+    
+    .weather-card-bg .p-2 .fw-bold {
+        font-size: 0.9rem;
+        margin-top: 2px;
+    }
+
+    /* 5. Tombol Lihat Detail (Pindah ke paling bawah) */
+    .weather-card-bg a.btn {
+        width: 100%;
+        margin-top: 1.2rem !important;
+        font-size: 0.9rem;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.25) !important;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+    
+    /* Ensure button width for city selection on small devices */
+    #dashboardWheelBtn { width: 100%; justify-content: center; }
+}
+
+/* Layout container adjustments */
+@media (max-width: 768px) {
+    body, html { overflow-x: hidden; max-width: 100vw; }
+    .container-fluid { max-width: 100%; overflow-x: hidden; padding-left: 15px; padding-right: 15px; }
+    .row { margin-left: -10px; margin-right: -10px; }
+    [class*="col-"] { padding-left: 10px; padding-right: 10px; }
+}
+
+/* Better spacing for lists on mobile */
+@media (max-width: 768px) {
+    .list-group-item {
+        padding: 0.8rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    .list-group-item a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-decoration: none;
+    }
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+}

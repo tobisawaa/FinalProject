@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* --- COLOR PALETTE (DARK PROFESSIONAL) --- */
+    --bg-dark: #0f172a;        /* Background Utama (Sangat Gelap) */
+    --card-dark: #1e293b;      /* Card & Sidebar (Agak Terang) */
+    --sidebar-hover: #334155;
+    
+    --accent-color: #10b981;   /* Emerald Green */
+    --accent-hover: #059669;
+    --danger-color: #ef4444;
+    
+    --border-color: #334155;
+    
+    /* TEXT COLORS - DIBUAT LEBIH TERANG */
+    --text-white: #ffffff;     /* Putih Murni */
+    --text-light: #f1f5f9;     /* Putih Tulang */
+    --text-muted: #cbd5e1;     /* Abu-abu Terang (Bukan gelap lagi) */
+}
+
+/* Reset Dasar */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-light); /* Default Text Color jadi Terang */
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-white);
+    font-weight: 700;
+}
+
+a { text-decoration: none; }
+
+/* ============================
+   LOGIN PAGE ADMIN
+   ============================ */
+body.admin-login-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+}
+
+.login-card {
+    background-color: var(--card-dark);
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-icon-lg {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* Form Styles - FIXED CONTRAST */
+.form-label {
+    color: var(--text-muted) !important; /* Dipaksa jadi abu terang */
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    background-color: #020617 !important; /* Input lebih gelap dari card */
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-white) !important; /* Teks input PUTIH */
+    padding: 12px;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
+    color: white !important;
+}
+
+/* Fix Placeholder agar kelihatan */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.btn-admin-login {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.btn-admin-login:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.back-link {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    display: block;
+    transition: 0.3s;
+}
+.back-link:hover { color: var(--accent-color); }
+
+/* ============================
+   DASHBOARD ADMIN
+   ============================ */
+/* Sidebar */
+.sidebar {
+    background-color: var(--card-dark);
+    min-height: 100vh;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand {
+    padding: 25px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link-admin {
+    color: var(--text-muted); /* Abu terang */
+    padding: 16px 25px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.nav-link-admin:hover, .nav-link-admin.active {
+    color: var(--text-white);
+    background-color: var(--sidebar-hover);
+    border-left-color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-link-admin i { font-size: 1.2rem; width: 24px; text-align: center; }
+
+/* Main Content */
+.main-content {
+    margin-left: 260px; 
+    padding: 40px;
+    min-height: 100vh;
+}
+
+/* Cards Dashboard - FIX TEXT */
+.stat-card {
+    background-color: var(--card-dark);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.stat-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.bg-icon-primary { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.bg-icon-success { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.bg-icon-warning { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.bg-icon-light   { background: rgba(255, 255, 255, 0.1); color: #e2e8f0; }
+
+.stat-card h2 { 
+    font-size: 2.5rem; 
+    margin: 0; 
+    font-weight: 700; 
+    color: var(--text-white); /* Angka jadi putih */
+}
+.stat-card span { 
+    color: var(--text-muted); /* Label jadi abu terang */
+    font-size: 0.9rem; 
+}
+
+/* ================================
+   OVERRIDES & ENHANCEMENTS
+   (tempel di akhir admin.css)
+   ================================ */
+
+/* Pastikan semua teks tabel admin selalu terang (override inline / theme lain) */
+.card-table .admin-table,
+.card-table .admin-table th,
+.card-table .admin-table td,
+.card-table .admin-table a,
+.card-table .admin-table span,
+.card-table .admin-table p,
+.card-table .admin-table div {
+    color: var(--text-light) !important;
+}
+
+/* Hilangkan latar putih pada baris yang mungkin di-generate sebagai default,
+   jadikan transparan supaya card background tetap gelap dan teks kontras */
+.card-table .admin-table tr,
+.card-table .admin-table tbody tr,
+.card-table .admin-table td {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+}
+
+/* Hover sedikit lebih lembut dan tidak mengubah teks jadi gelap */
+.card-table .admin-table tr:hover td {
+    background-color: rgba(255,255,255,0.03) !important;
+}
+
+/* Buat header table jelas dan tetap terang */
+.card-table .admin-table th {
+    background-color: rgba(2,6,23,0.6) !important;
+    color: var(--text-muted) !important;
+}
+
+/* Tampilkan username yang disembunyikan (mis. collapse/d-none) DI DALAM konteks card-table
+   — ini memaksa elemen collapse menjadi terlihat hanya di area tabel admin.
+   Tidak merusak collapse pada tempat lain (seharusnya). */
+.card-table .admin-table .collapse,
+.card-table .admin-table .d-none,
+.card-table .admin-table .hidden,
+.card-table .admin-table .user-hidden {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    opacity: 1 !important;
+}
+
+/* Spesifik: pastikan nama user (biasanya <strong>, <b>, .name, .username, h4) muncul sebagai block */
+.card-table .admin-table td strong,
+.card-table .admin-table td b,
+.card-table .admin-table td .name,
+.card-table .admin-table td .username,
+.card-table .admin-table td h4,
+.card-table .admin-table td .user-name {
+    display: block !important;
+    color: var(--text-white) !important;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.1;
+}
+
+/* Email / secondary info tetap lebih halus */
+.card-table .admin-table td small,
+.card-table .admin-table td .email,
+.card-table .admin-table td .muted {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    display: block;
+}
+
+/* Perbaikan visual: rounded container, lembut shadow, dan spacing */
+.card-table {
+    border-radius: 12px !important;
+    padding: 10px !important;
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Badge & tombol rapi */
+.badge {
+    background: rgba(255,255,255,0.03);
+    color: var(--text-light);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-transform: none;
+}
+
+/* Tombol delete lebih jelas namun tidak terlalu mencolok */
+.btn-danger, .btn-danger-outline, .btn-delete {
+    border: 1px solid rgba(239,68,68,0.15);
+    background: transparent;
+    color: var(--danger-color);
+}
+
+/* Responsive tweak kecil agar username tidak terpotong pada layar kecil */
+@media (max-width: 900px) {
+    .card-table .admin-table td { white-space: normal !important; }
+    .card-table .admin-table td .user-name { font-size: 0.98rem; }
+}
+
+/* Safety: jika ada JS yang menambahkan inline color:black, override itu juga */
+.card-table .admin-table [style*="color: black"],
+.card-table .admin-table [style*="color:#000"],
+.card-table .admin-table [style*="color: rgb(0, 0, 0)"] {
+    color: var(--text-light) !important;
+}
+
+/* ================================
+   FIX: Dashboard Overview (angka / label / icon)
+   Tempel di akhir admin.css
+   ================================ */
+
+/* Generic catch-all for overview / kpi / stat cards */
+[class*="overview"],
+[class*="Overview"],
+[class*="kpi"],
+[class*="stat"],
+[class*="tile"],
+[class*="metric"],
+[class*="widget"],
+[class*="info-card"],
+.dashboard-overview,
+.overview-cards,
+.overview-row,
+.kpi-row,
+.stat-row {
+    color: #f4f7fb !important; /* teks utama */
+}
+
+/* Numbers / big values */
+[class*="count"],
+[class*="number"],
+[class*="value"],
+[class*="stat-number"],
+[class*="kpi-value"],
+.metric-value,
+.tile-number,
+.widget-value {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+}
+
+/* Small labels / captions */
+[class*="label"],
+[class*="caption"],
+[class*="subtitle"],
+.tile-label,
+.widget-label,
+.kpi-label {
+    color: #d0d7df !important;
+    font-weight: 600;
+}
+
+/* Icons inside overview — ensure they stay visible */
+[class*="icon"],
+[class*="ico"],
+.tile .icon,
+.widget .icon,
+.kpi .icon {
+    color: #cfe8ff !important;
+    opacity: 1 !important;
+    filter: none !important; /* disable accidental darkening */
+}
+
+/* Card background adjustments (non-invasive) */
+.overview .card,
+.kpi-card,
+.stat-card,
+.tile,
+.widget {
+    background-color: rgba(3,10,20,0.65) !important;
+    border: 1px solid rgba(255,255,255,0.03) !important;
+}
+
+/* Prevent inline black color from ruining overview */
+.dashboard-overview [style*="color: black"],
+.dashboard-overview [style*="color:#000"],
+.dashboard-overview [style*="color: rgb(0, 0, 0)"],
+[class*="overview"] [style*="color: black"],
+[class*="kpi"] [style*="color: black"] {
+    color: #f4f7fb !important;
+}
+
+/* If numbers are images or SVG with fill set inline, try forcing fill */
+.dashboard-overview svg [fill*="#000"],
+.dashboard-overview svg [fill*="black"] {
+    fill: #ffffff !important;
+}
+
+/* Mobile tweak: keep numbers readable and not squashed */
+@media (max-width: 900px) {
+    [class*="value"], [class*="number"], .metric-value { font-size: 1.1rem !important; }
+}
+
+/* Safety net: highest-specificity fallback (only if theme is extremely stubborn) */
+body .dashboard-overview, body .dashboard-overview * {
+    -webkit-font-smoothing: antialiased;
+    color: inherit !important;
+}

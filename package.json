@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "ngrok": "^5.0.0-beta.2",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0-alpha.6"
+  }
+}

@@ -1,0 +1,257 @@
+/* ===================================
+   Login Page Styles - Sky Blue Theme
+   =================================== */
+
+:root {
+    --sky-primary: #87CEEB;
+    --sky-dark: #4A90E2;
+    --sky-lighter: #B0E0E6;
+    --white: #ffffff;
+    --dark: #2c3e50;
+    --gray: #ecf0f1;
+}
+
+body.login-page {
+    background: linear-gradient(135deg, #87CEEB 0%, #4A90E2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif; /* Pastikan font konsisten */
+    padding: 20px;
+}
+
+/* Container Utama Kartu */
+.login-container {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-wrapper {
+    display: flex;
+    min-height: 550px;
+    flex-direction: row; /* Default Desktop: Kiri-Kanan */
+}
+
+/* --- BAGIAN KIRI (FORM) --- */
+.login-form-side {
+    flex: 1;
+    padding: 50px 45px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form-side h3 {
+    color: var(--sky-dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* --- INPUT GROUP FIX (MATA PASSWORD) --- */
+.input-group {
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.input-group:focus-within {
+    border-color: var(--sky-dark);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.1);
+}
+
+.form-control {
+    border: 2px solid #e0e0e0; /* Fallback untuk input biasa */
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+    width: 100%;
+}
+
+/* Jika form-control ada di dalam input-group, reset stylenya */
+.input-group .form-control {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 0 !important;
+    height: 48px;
+    border-radius: 0 !important;
+}
+
+.input-group-text {
+    background: transparent !important;
+    border: none !important;
+    color: #999;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.form-control:focus {
+    border-color: var(--sky-dark);
+    background: var(--white);
+    outline: none;
+}
+
+/* Tombol Utama */
+.btn-primary {
+    background: linear-gradient(135deg, var(--sky-primary) 0%, var(--sky-dark) 100%);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--sky-dark) 0%, var(--sky-primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+}
+
+/* Tombol Guest */
+.btn-outline-secondary {
+    border: 2px solid #e0e0e0;
+    color: #6c757d;
+    background: transparent;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-outline-secondary:hover {
+    background: #f8f9fa;
+    color: #333;
+    border-color: #ced4da;
+}
+
+/* --- BAGIAN KANAN (INFO) --- */
+.login-info-side {
+    flex: 1;
+    background: linear-gradient(135deg, var(--sky-primary) 0%, var(--sky-dark) 100%);
+    color: var(--white);
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-info-side h4 {
+    font-weight: 700;
+    margin-bottom: 35px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    gap: 15px;
+}
+
+.feature-item i {
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-text h6 { font-weight: 700; margin-bottom: 5px; font-size: 15px; }
+.feature-text p { font-size: 13px; opacity: 0.9; margin: 0; line-height: 1.5; }
+
+.info-box {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 13px;
+}
+
+/* =========================================
+   PERBAIKAN RESPONSIVE (LAYOUT MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+    body.login-page {
+        padding: 0; /* Full width di HP */
+        align-items: flex-start; /* Mulai dari atas */
+    }
+
+    .login-container {
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+    }
+
+    .login-wrapper {
+        flex-direction: column; /* PENTING: Susun ke bawah (Stack) */
+    }
+
+    .login-form-side {
+        order: 1; /* Form Login di Atas */
+        padding: 40px 25px;
+        min-height: auto; /* Biarkan tinggi menyesuaikan isi */
+    }
+
+    .login-info-side {
+        order: 2; /* Info Fitur di Bawah */
+        padding: 40px 25px;
+        border-radius: 30px 30px 0 0; /* Lengkungan pemanis di atas info */
+        margin-top: -20px; /* Efek numpuk sedikit */
+        min-height: auto;
+    }
+
+    .login-form-side h3 { font-size: 24px; }
+    
+    /* Fix Input Group di Mobile agar tidak berantakan */
+    .input-group {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    
+    .input-group .form-control {
+        margin-bottom: 0 !important; /* Paksa margin 0 agar sejajar dengan mata */
+        height: 46px; /* Tinggi input nyaman disentuh jari */
+    }
+}

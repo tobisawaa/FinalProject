@@ -1,0 +1,674 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --dark-color: #2c3e50;
+    --light-glass: rgba(255, 255, 255, 0.95);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f4f7f6;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    color: #444;
+    min-height: 100vh;
+}
+
+/* --- Card Styling (Glassmorphism Lite) --- */
+.card {
+    background: var(--light-glass);
+    border: none;
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 123, 255, 0.1);
+}
+
+.card-title {
+    font-weight: 700;
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* --- Landing Page (Index) --- */
+.hero-section {
+    padding: 80px 0;
+    background: var(--primary-gradient);
+    border-radius: 0 0 50px 50px;
+    color: white;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
+}
+
+.feature-icon-box {
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    -webkit-background-clip: text; /* Untuk Chrome/Safari */
+    background-clip: text;         /* Tambahkan baris ini (Standar) */
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Dashboard Elements --- */
+.weather-card-bg {
+    background: var(--primary-gradient) !important;
+    color: white;
+    border: none;
+}
+
+/* Sidebar Profile Styling */
+.profile-sidebar {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+}
+
+.profile-info h5 {
+    margin: 0;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.profile-info span {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.profile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.profile-menu-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.profile-menu-list li:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+/* Progress Bars Custom */
+.progress {
+    height: 8px;
+    border-radius: 10px;
+    background-color: #e9ecef;
+    margin-bottom: 5px;
+}
+
+.stat-item {
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #666;
+}
+
+/* Badge & Buttons */
+.badge {
+    padding: 0.5em 1em;
+    border-radius: 30px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Utilities */
+.city-dropdown div:hover {
+    background-color: #f8f9fa;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* --- Tambahan untuk Analytics & Logs --- */
+
+/* KPI Cards (Statistik Ringkas) */
+.kpi-card {
+    background: white;
+    border: none;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.kpi-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.kpi-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.kpi-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-color);
+    line-height: 1.2;
+}
+
+.kpi-label {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 500;
+}
+
+/* Tabel Logs yang Lebih Cantik */
+.table-modern {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.table-modern thead th {
+    border: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+    padding: 0 15px 10px 15px;
+}
+
+.table-modern tbody tr {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: 0.2s;
+}
+
+.table-modern tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.table-modern td {
+    border: none;
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.table-modern td:first-child { border-radius: 10px 0 0 10px; }
+.table-modern td:last-child { border-radius: 0 10px 10px 0; }
+
+/* Filter Box */
+.filter-box {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 8px 15px;
+    box-shadow: var(--shadow-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================================
+   Custom Dropdown (Agar Tidak Menutupi Layar)
+   ========================================= */
+
+/* Container Utama */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+    max-width: 320px; /* Lebar maksimal agar proporsional */
+    font-family: 'Poppins', sans-serif;
+    z-index: 100; /* Pastikan di atas elemen lain saat tertutup */
+}
+
+/* Bagian Tombol Pemicu (Bentuk Pill) */
+.custom-select-trigger {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.custom-select-trigger:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.custom-select-trigger span {
+    flex-grow: 1;
+    font-weight: 700;
+    color: #333;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.select-icon-red {
+    color: #dc3545; /* Merah ikon lokasi */
+    font-size: 1.2rem;
+}
+
+.chevron-animate {
+    transition: transform 0.3s ease;
+    color: #999;
+}
+
+/* Saat dropdown terbuka, putar panah */
+.custom-select-container.active .chevron-animate {
+    transform: rotate(180deg);
+}
+
+/* Bagian List Pilihan (Dropdown Menu) */
+.custom-options {
+    position: absolute;
+    top: 115%; /* Jarak sedikit dari tombol trigger */
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 999; /* Z-Index tinggi agar muncul di atas konten lain */
+    
+    /* Animasi & Visibility */
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* State Terbuka */
+.custom-select-container.active .custom-options {
+    max-height: 300px; /* Batasi tinggi maksimal (Scrollable) */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    padding: 10px 0;
+    overflow-y: auto; /* Aktifkan scroll vertikal */
+}
+
+/* Item Pilihan */
+.custom-option {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.custom-option:last-child {
+    border-bottom: none;
+}
+
+.custom-option:hover {
+    background-color: #f0f7ff;
+    color: #007bff;
+    padding-left: 25px; /* Efek geser sedikit saat hover */
+}
+
+.custom-option.selected {
+    background-color: #e6f3ff;
+    color: #007bff;
+    font-weight: 700;
+}
+
+/* Scrollbar Cantik (Webkit) */
+.custom-options::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 16px 16px 0;
+}
+.custom-options::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+.custom-options::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+/* ============================================
+   RESPONSIVE MOBILE IMPROVEMENTS
+   ============================================ */
+
+/* Extra Small Devices (320px - 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .hero-section {
+        padding: 40px 15px;
+        border-radius: 0 0 30px 30px;
+        margin-bottom: 30px;
+    }
+
+    .hero-section h1 {
+        font-size: 1.75rem !important;
+        line-height: 1.3;
+    }
+
+    .hero-section p {
+        font-size: 0.9rem;
+        margin-bottom: 20px !important;
+    }
+
+    .hero-section .btn {
+        font-size: 0.85rem;
+        padding: 0.6rem 1.5rem !important;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .hero-section .d-flex {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+        border-radius: 12px;
+    }
+
+    .card .card-body {
+        padding: 1rem;
+    }
+
+    .feature-icon-box {
+        font-size: 2.5rem;
+    }
+
+    .profile-sidebar {
+        position: static;
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .profile-avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .form-control {
+        font-size: 16px; /* Prevent zoom on iOS */
+        padding: 10px 12px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    /* Weather Card Mobile */
+    .weather-card-bg {
+        border-radius: 12px;
+    }
+
+    .weather-card-bg .row {
+        flex-direction: column;
+    }
+
+    .weather-card-bg h1 {
+        font-size: 2.5rem;
+    }
+
+    /* KPI Cards */
+    .kpi-card {
+        padding: 15px;
+    }
+
+    .kpi-value {
+        font-size: 1.5rem;
+    }
+
+    /* Table Mobile */
+    .table-modern {
+        font-size: 0.85rem;
+    }
+
+    .table-modern td {
+        padding: 10px;
+    }
+
+    /* Custom Select */
+    .custom-select-trigger {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .custom-select-trigger span {
+        font-size: 0.85rem;
+    }
+
+    .custom-options {
+        max-height: 250px;
+    }
+
+    .custom-option {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Navbar adjustments */
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.3rem;
+    }
+
+    .display-1 {
+        font-size: 2rem;
+    }
+
+    .display-4 {
+        font-size: 1.5rem;
+    }
+
+    /* Animation delays on mobile */
+    .animate-up {
+        animation-delay: 0 !important;
+    }
+}
+
+/* Small Devices (480px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .hero-section {
+        padding: 50px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section .d-flex {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-section .btn {
+        width: 100%;
+    }
+
+    .card {
+        margin-bottom: 1.25rem;
+    }
+
+    .profile-sidebar {
+        position: static;
+        margin-bottom: 25px;
+    }
+
+    .form-control {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        min-height: 44px; /* Touch target minimum */
+    }
+
+    .table-modern {
+        font-size: 0.9rem;
+    }
+
+    .weather-card-bg h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Extra Small + adjustments */
+@media (max-width: 576px) {
+    .d-flex.flex-md-row {
+        flex-direction: column !important;
+    }
+
+    .justify-content-between {
+        justify-content: flex-start !important;
+        flex-direction: column !important;
+    }
+
+    .gap-3 {
+        gap: 1rem !important;
+    }
+
+    /* Sidebar columns */
+    .col-md-6, .col-lg-3 {
+        width: 100% !important;
+    }
+
+    .weather-card-bg .row > div {
+        margin-bottom: 1.5rem;
+    }
+
+    .weather-card-bg .col-md-6:first-child {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* City button */
+    .btn-dark {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    /* Form groups */
+    .mb-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 2rem 1rem !important;
+        font-size: 0.85rem;
+    }
+
+    /* Badge adjustments */
+    .badge {
+        font-size: 0.8rem;
+    }
+
+    /* Icons */
+    .bi {
+        font-size: 1.25rem;
+    }
+}
