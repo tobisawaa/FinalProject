@@ -54,7 +54,7 @@ composer install
 
 3. Konfigurasi database
 
-- Salin atau sesuaikan `config/env.php` untuk menambahkan kredensial database dan pengaturan lain (lihat contoh di file tersebut).
+- Salin atau sesuaikan `config/env.php` untuk menambahkan kredensial database dan pengaturan lain.
 - Jalankan migrasi (file migrasi ada di folder `tools/`):
 
 ```bash
@@ -95,7 +95,7 @@ php tools/generate_vapid.php
 ## Menjalankan pekerjaan terjadwal dan notifikasi 
 
 - `tools/run_alerts.php` — memeriksa kondisi cuaca dan membuat notifikasi jika diperlukan
-- `public/auto_notification.php`, `public/auto_trigger.php` — endpoints yang dapat dipanggil via cron atau scheduler eksternal
+- `public/auto_notification.php` — endpoints yang dapat dipanggil via cron atau scheduler eksternal
 
 Contoh crontab (setiap 10 menit):
 
