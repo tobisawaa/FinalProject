@@ -3,7 +3,7 @@ require_once __DIR__ . '/../../src/classes/Auth.php';
 require_once __DIR__ . '/../../src/classes/Activity.php';
 
 $auth = new Auth();
-// Check if user is logged in
+// Mengecek user 
 $user = $auth->getCurrentUser();
 $activity = new Activity();
 
