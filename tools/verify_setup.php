@@ -108,7 +108,7 @@ if (file_exists($runAlertsPath)) {
     $allPassed = false;
 }
 
-// 8. Check OpenWeatherMap API
+// 8. Check OpenWeatherMap API 
 echo "Checking OpenWeatherMap API...\n";
 $apiKey = env('OPENWEATHER_API_KEY');
 if ($apiKey && strlen($apiKey) > 10) {
