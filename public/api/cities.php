@@ -22,7 +22,7 @@ try {
         $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    // Pastikan output lat/lon menjadi float (karena database return string)
+    // Pastikan output lat/lon menjadi float
     foreach ($cities as &$city) {
         $city['lat'] = (float)$city['lat'];
         $city['lon'] = (float)$city['lon'];
