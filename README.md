@@ -2,7 +2,7 @@
 
 **Ringkasan**
 
-FinalProject adalah aplikasi web PHP sederhana untuk mengumpulkan data cuaca, menyimpan log cuaca, dan mengirim notifikasi push (Web Push) kepada pelanggan. Aplikasi ini berisi manajemen aktivitas, otentikasi pengguna, verifikasi email, manajemen profil, dan API publik untuk data cuaca dan langganan notifikasi.
+FinalProject berikut adalah aplikasi web PHP sederhana untuk mengumpulkan data cuaca, menyimpan log cuaca, dan mengirim notifikasi push (Web Push) kepada pelanggan. Aplikasi ini berisi manajemen aktivitas, otentikasi pengguna, verifikasi email, manajemen profil, dan API publik untuk data cuaca dan langganan notifikasi.
 
 ---
 
