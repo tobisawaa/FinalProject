@@ -173,7 +173,7 @@ if ($isLoggedIn && !$isGuest) {
                 <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body px-4 pb-4 pt-0">
-                <div class="d-flex justify-content-center" style="margin-top: -50px;">
+                <div class="d-flex justify-content-center position-relative" style="margin-top: -50px;">
                     <div class="nav-avatar" id="profileLargeAvatar" style="width: 100px; height: 100px; font-size: 2.5rem; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <?php if (!empty($user['profile_picture'])): ?>
                             <img src="/FinalProjek/public/<?= htmlspecialchars($user['profile_picture']) ?>" alt="Avatar" style="width:100%;height:100%;">
@@ -181,13 +181,51 @@ if ($isLoggedIn && !$isGuest) {
                             <?= strtoupper(substr($user['name'], 0, 1)) ?>
                         <?php endif; ?>
                     </div>
+                    <button class="btn btn-sm btn-light border position-absolute rounded-circle shadow-sm" id="btnChangeAvatar" style="bottom: 0; right: 35%; width: 30px; height: 30px; padding: 0;" title="Ganti Foto">
+                        <i class="bi bi-camera-fill text-muted small"></i>
+                    </button>
                 </div>
-                <div class="text-center mt-3 mb-4"><h4 class="fw-bold mb-0"><?= htmlspecialchars($user['name']) ?></h4><p class="text-muted small"><?= htmlspecialchars($user['email']) ?></p></div>
-                <div class="bg-light rounded-4 p-3">
-                    <div class="d-flex justify-content-center mb-3">
-                        <button class="btn btn-outline-primary btn-sm" id="btnChangeAvatar">Ubah Foto Profil</button>
+
+                <div class="mt-3 mb-4">
+                    <div id="profileView" class="text-center">
+                        <h4 class="fw-bold mb-0 text-dark"><?= htmlspecialchars($user['name']) ?></h4>
+                        <p class="text-muted small mb-2"><?= htmlspecialchars($user['email']) ?></p>
+                        <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 mt-1" id="btnToggleEdit">
+                            <i class="bi bi-pencil-square me-1"></i> Edit Profil
+                        </button>
                     </div>
-                    <h6 class="fw-bold mb-3 small text-muted text-uppercase">Statistik</h6>
+
+                    <form id="profileEditForm" class="d-none text-start p-3 bg-light rounded-3 border mt-3">
+                        <div class="mb-2">
+                            <label class="form-label small fw-bold text-muted">Username</label>
+                            <input type="text" name="name" class="form-control form-control-sm" value="<?= htmlspecialchars($user['name']) ?>" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small fw-bold text-muted">Email</label>
+                            <input type="email" name="email" class="form-control form-control-sm" value="<?= htmlspecialchars($user['email']) ?>" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label small fw-bold text-muted">Password Baru <span class="text-muted fw-normal">(Opsional)</span></label>
+                            <div class="input-group input-group-sm">
+                                <input type="password" name="password" id="editPass" class="form-control" placeholder="Kosongkan jika tidak ubah">
+                                <button type="button" class="btn btn-outline-secondary" onclick="togglePass('editPass')"><i class="bi bi-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Konfirmasi Password</label>
+                            <div class="input-group input-group-sm">
+                                <input type="password" name="confirm_password" id="editConfirmPass" class="form-control" placeholder="Ulangi password baru">
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-end">
+                            <button type="button" class="btn btn-sm btn-secondary" id="btnCancelEdit">Batal</button>
+                            <button type="submit" class="btn btn-sm btn-primary" id="btnSaveProfile">Simpan Perubahan</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-light rounded-4 p-3 border border-light">
+                    <h6 class="fw-bold mb-3 small text-muted text-uppercase text-center">Statistik Aktivitas</h6>
                     <div class="progress mb-3" style="height: 6px;"><div class="progress-bar" style="width: 100%"></div></div>
                     <div class="row g-2 text-center">
                         <div class="col-4"><div class="p-2 bg-white rounded border"><div class="text-success fw-bold small"><?= number_format($navStats['completed'],0) ?>%</div><div class="text-muted" style="font-size:10px">Selesai</div></div></div>
@@ -228,10 +266,87 @@ if ($isLoggedIn && !$isGuest) {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    // Logic Navbar Avatar Upload
+    // --- Logic Toggle Password Visibility ---
+    function togglePass(id) {
+        const x = document.getElementById(id);
+        if (x.type === "password") x.type = "text"; else x.type = "password";
+    }
+
+    // Logic Navbar Avatar & Profile Edit
     document.addEventListener('DOMContentLoaded', () => {
+        
+        // --- LOGIC EDIT PROFILE ---
+        const btnToggleEdit = document.getElementById('btnToggleEdit');
+        const btnCancelEdit = document.getElementById('btnCancelEdit');
+        const profileView = document.getElementById('profileView');
+        const profileEditForm = document.getElementById('profileEditForm');
+        
+        if (btnToggleEdit) {
+            btnToggleEdit.addEventListener('click', () => {
+                profileView.classList.add('d-none');
+                profileEditForm.classList.remove('d-none');
+            });
+        }
+
+        if (btnCancelEdit) {
+            btnCancelEdit.addEventListener('click', () => {
+                profileEditForm.classList.add('d-none');
+                profileView.classList.remove('d-none');
+                profileEditForm.reset(); // Reset form jika batal
+            });
+        }
+
+        if (profileEditForm) {
+            profileEditForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btnSave = document.getElementById('btnSaveProfile');
+                const originalText = btnSave.innerHTML;
+                
+                // Cek Password Match di Client Side
+                const p1 = document.getElementById('editPass').value;
+                const p2 = document.getElementById('editConfirmPass').value;
+                if(p1 && p1 !== p2) {
+                    Swal.fire({ icon: 'error', title: 'Oops...', text: 'Konfirmasi password tidak cocok!' });
+                    return;
+                }
+
+                btnSave.disabled = true;
+                btnSave.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Simpan...';
+
+                try {
+                    const formData = new FormData(profileEditForm);
+                    const res = await fetch('/FinalProjek/public/update_profile.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+
+                    if(data.status === 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: data.message,
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => location.reload());
+                    } else {
+                        Swal.fire({ icon: 'error', title: 'Gagal', text: data.message });
+                        btnSave.disabled = false;
+                        btnSave.innerHTML = originalText;
+                    }
+                } catch (err) {
+                    Swal.fire({ icon: 'error', title: 'Error', text: 'Terjadi kesalahan koneksi.' });
+                    btnSave.disabled = false;
+                    btnSave.innerHTML = originalText;
+                }
+            });
+        }
+
+
+        // --- LOGIC CROPPER & UPLOAD (EXISTING) ---
         let cropper = null;
         const btnChange = document.getElementById('btnChangeAvatar');
         const inputFile = document.getElementById('inputAvatarFile');
@@ -281,12 +396,12 @@ if ($isLoggedIn && !$isGuest) {
                     if (data.status === 'success') {
                         location.reload(); 
                     } else {
-                        alert("Gagal: " + data.message);
+                        Swal.fire({ icon: 'error', title: 'Gagal', text: data.message });
                         btnUpload.disabled = false;
                         btnUpload.innerText = originalText;
                     }
                 } catch (err) { 
-                    alert("Error koneksi"); 
+                    Swal.fire({ icon: 'error', title: 'Error', text: 'Error koneksi' });
                     btnUpload.disabled = false;
                     btnUpload.innerText = originalText;
                 }
